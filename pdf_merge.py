@@ -37,7 +37,7 @@ class pdfMergerApp():
         self.root = tk.Tk()
         self.root.title("PDF Merger")
 
-        self.folderSelectButton = tk.Button(self.root, text="Choose a folder", command=self.folderSelect, height=4)
+        self.folderSelectButton = tk.Button(self.root, text="Choose another folder", command=self.folderSelect, height=4)
         self.folderSelectButton.grid(row=0, column=0, sticky="WE")
 
         self.pdfListbox = DragDropListbox(self.root, width=60, font=('Arial', 15))
@@ -46,12 +46,17 @@ class pdfMergerApp():
         self.pdfMergeButton = tk.Button(self.root, text="Merge into PDF", command=self.pdfMergeFunction, height=4)
         self.pdfMergeButton.grid(row=0, column=1, sticky="WE")
 
+        self.folderSelect(True)
+
         self.root.mainloop()
 
-    def folderSelect(self):
-        self.pdfFolder = filedialog.askdirectory()
+    def folderSelect(self, auto = False):
+        if auto:
+            self.pdfFolder = "./"
+        else:
+            self.pdfFolder = filedialog.askdirectory()
 
-        myFiles = [fileName for fileName in os.listdir(self.pdfFolder) if os.path.splitext(fileName)[1] == '.pdf']
+        myFiles = [fileName for fileName in os.listdir(self.pdfFolder) if os.path.splitext(fileName)[1] == '.pdf' and os.path.splitext(fileName)[0] != "OUTPUT"]
 
         itemNumber = self.pdfListbox.size()
         self.pdfListbox.delete(0, itemNumber)
@@ -86,16 +91,11 @@ class pdfMergerApp():
             pdf.pages.extend(src.pages)
 
         try:
-            os.remove(self.pdfFolder + "/merged/OUTPUT.pdf")
+            os.remove(self.pdfFolder + "/OUTPUT.pdf")
         except:
             pass
 
-        try:
-            os.makedirs(self.pdfFolder + '/merged')
-        except:
-            pass
-
-        pdf.save(self.pdfFolder + '/merged/OUTPUT.pdf')
+        pdf.save(self.pdfFolder + '/OUTPUT.pdf')
 
         print('Success!')
 
