@@ -2,8 +2,8 @@
 A simple python 3 tool with user-interface to merge pdfs in customizable order
 
 ## Usage
-1. Put the script and the pdf files you want to merge in the same folder.  
-2. Run the script.  
+1. Put the script/binary and the pdf files you want to merge in the same folder.  
+2. Run the script/binary.  
 3. Double check if folder is correct, otherwise choose another
 4. Define merge order in GUI (Drag them with your mouse)
 5. The merged pdf will be created as OUTPUT.pdf  
