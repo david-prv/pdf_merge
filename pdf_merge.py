@@ -1,3 +1,13 @@
+"""
+PDF MERGE
+A simple pdf merge script
+---
+Based on solobeton99's "pdf_merge" tool
+Enhanced by David Dewes
+---
+Source: https://github.com/david-prv/pdf_merge
+"""
+
 import tkinter as tk
 from tkinter import filedialog
 import os
@@ -104,9 +114,5 @@ class pdfMergerApp():
         self.pdfListbox.insert('end', 'Merge Successful!')
         self.pdfFolder = ""
 
-
-
-
-
-
-pdfMergerApp()
+if __name__ == "__main__":
+    pdfMergerApp()
