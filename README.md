@@ -15,8 +15,9 @@ Tested with:
 
 ## Installation
 ```
+sudo apt install python3-tk
 pip install pikepdf
-git clone https://github.com/david-prv/pdf_merge 
+git clone https://github.com/david-prv/pdf_merge.git
 ```
 
 ## GUI
